@@ -1,0 +1,80 @@
+============================================
+7COM1079 - Statistical Analysis Output
+============================================
+
+Research Question:
+Is there a significant correlation between animal fat consumption
+and COVID-19 deaths across countries?
+
+Variables used:
+X = Animal fats (grams per capita per day)
+Y = COVID-19 Deaths
+
+Number of countries in analysis:  164 
+
+Summary statistics for Animal fats (X):
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0348  1.6907  3.3123  4.1765  6.2374 14.9373 
+
+Summary statistics for Deaths (Y):
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.002013 0.011998 0.039370 0.069503 0.185428 
+
+--------------------------------------------
+Pearson Correlation Test (X vs Y)
+--------------------------------------------
+
+	Pearson's product-moment correlation
+
+data:  analysis_df$X and analysis_df$Y
+t = 7.7347, df = 162, p-value = 1.042e-12
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.3977244 0.6229897
+sample estimates:
+      cor 
+0.5193211 
+
+
+--------------------------------------------
+Linear Regression Model: Y ~ X
+--------------------------------------------
+
+Call:
+lm(formula = Y ~ X, data = analysis_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.11367 -0.02423 -0.01169  0.01782  0.12720 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.0074874  0.0052560   1.425    0.156    
+X           0.0076337  0.0009869   7.735 1.04e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.04176 on 162 degrees of freedom
+Multiple R-squared:  0.2697,	Adjusted R-squared:  0.2652 
+F-statistic: 59.82 on 1 and 162 DF,  p-value: 1.042e-12
+
+
+--------------------------------------------
+Normality checks (Shapiro-Wilk)
+--------------------------------------------
+
+X (Animal fats):
+
+	Shapiro-Wilk normality test
+
+data:  analysis_df$X
+W = 0.89791, p-value = 3.102e-09
+
+
+Y (Deaths):
+
+	Shapiro-Wilk normality test
+
+data:  analysis_df$Y
+W = 0.78826, p-value = 3.931e-14
+
